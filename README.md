@@ -8,11 +8,11 @@ This git will host notes and observations QBASIC's source code, which was leaked
 # OVERVIEW
 
 QBASIC (code name "QB5") consists of several projects, each with their own purpose:
-- BASCOM is the original BASIC compiler (original version for IBM PC is 5, however some of the code goes back farther).
-- COW (Character Oriented Windows) provides API and shell for the user interface. It is very similar to Microsoft Windows, but for text mode.
-- BQLB is the runtime library.
+- BASCOM is the original BASIC compiler (original version for IBM PC is 5, however some of the code goes back farther). Its code is considered "version independent", and is in folder "QB".
+- COW (Character Oriented Windows) provides API and shell for the user interface. It is very similar to Microsoft Windows, but for text mode. Its code is in folder "BEEF", and is built in folder "COW".
+- BQLB is the runtime library. It resides in folder "RUNTIME".
 
-QBASIC is a synthesis of BASCOM and COW, with BQLB as the backend.
+QBASIC is a synthesis of BASCOM and COW, with BQLB as the backend. Its glue code is in folder "45\QB5\QB" and is built to "45\QB5\QBRUN". To build it using the tools in "45\TL\BIN", navigate to "45\QB5\QBRUN" in DOS and enter "SAMPLE". (hint: it helps to edit SAMPLE.BAT first, replacing "$(QB)" with "45". Also, be sure to move the root folder, "45", to root of drive).
 
 
 # Structure of BASCOM
@@ -21,7 +21,7 @@ BASCOM, which runs alongside COW, consists of several stages. The first stage is
 
 Code hosted in the interpreter is dealt with one line at a time. It is tokenized, parsed, then "listed" according to the rules for what the compiler assumes it represents. Listing capitalizes reserved words and enforces white spacing. No listing will occur if syntax checking is disabled. Listing is forced upon the user when loading code saved as binary, as it is the method by which the code is converted back to text and made readable.
 
-# Editing BASCOM
+## Editing BASCOM
 
 BASCOM relies on lookup tables which are auto-generated from markup files by dedicated tools. QBASBNF.PRS contains four tables. The first is the list of all reserved words known to the interpreter. They are of the form:
 
