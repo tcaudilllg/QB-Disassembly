@@ -29,13 +29,13 @@ BASCOM relies on lookup tables which are auto-generated from markup files by ded
 
 QBASBNF.PRS contains four tables. The first is the list of all reserved words known to the interpreter. They are of the form:
 
-tk[label] ("[word]")
+`tk[label] ("[word]")`
 
 Reserved words are automatically capitalized by the environment's lister component.
 
 The second and third tables define the grammar. For a reserved word to be useful, it must have at least one grammar. The parser uses the grammar to determine which bytecodes to create. Reserved words may have multiple grammar, each meaning a different code. The second table consists of statement grammer, followed by function grammar. Statements and functions may produce multiple bytecodes. Grammar entries have the form
 
-tk[label] [Exp | tkComma | MARK([mark id]) | tk[reserved word]] EMIT([opcode label]);
+`tk[label] [Exp | tkComma | MARK([mark id]) | tk[reserved word]] EMIT([opcode label]);`
 
 Grammar roughly conforms to the syntax described in the online help files, and uses the same markup. Of particular interest is the MARK symbol, which can help the parser/scanner make sense of complex grammar.
 
