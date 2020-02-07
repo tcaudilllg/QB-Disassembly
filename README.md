@@ -12,7 +12,7 @@ QBASIC (code name "QB5") consists of several projects, each with their own purpo
 - `COW` (Character Oriented Windows) provides API and shell for the user interface. It is very similar to Microsoft Windows, but for text mode. Its code is in folder "`BEEF`", and is built in folder "`COW`".
 - `BQLB` is the runtime library. It resides in folder "`RUNTIME`".
 
-QBASIC is a synthesis of `BASCOM` and `COW`, with `BQLB` as the backend. Its glue code is in folder "`45\QB5\QB`" and is built to "`45\QB5\QBRUN`". To build it using the tools in "`45\TL\BIN`", navigate to "`45\QB5\QBRUN`" in DOS and enter "`SAMPLE`". (hint: it helps to edit `SAMPLE.BAT` first, replacing "`$(QB)`" with "`45`". Also, be sure to move the root folder, "`45`", to root of drive).
+QBASIC is a synthesis of `BASCOM` and `COW`, with `BQLB` as the backend. Its glue code is in folder "`45\QB5\QB`" and is built to "`45\QB5\QBRUN`". To build it using the tools in "`45\TL\BIN`", navigate to "`45\QB5\QBRUN`" in DOS and enter "`SAMPLE`". (hint: it helps to edit `SAMPLE.BAT` first, replacing "`$(QB)`" with "`45`". Also, be sure to move the root folder, "`45`", to root of drive). Building in latest release of QEMU hosting FreeDOS crashes QEMU; recommend DOSBOX. Builds in 2min at 200000 DOSBOX cycles or equivalent.
 
 
 ## Structure of BASCOM
