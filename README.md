@@ -48,5 +48,11 @@ Running `QBASBNF.PRS` through `BNFPRS.EXE` produces "binding" ASM include files 
 
 ### Rule table (PEROPCOD.TXT)
 
-
+Each opcode is bound by a set of rules specific to it. These rules are specified in PEROPCOD.TXT. The following is an example ruleset
+from the table therein:
+```
+opStPset	  |     		  | Ss_0_0	      | 0
+                    exStPset              | 0+OPA_fExecute
+                    LrStPset              | ORW_Pset;
+```
 
