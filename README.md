@@ -56,3 +56,12 @@ opStPset	  |     		  | Ss_0_0	      | 0
                     LrStPset              | ORW_Pset;
 ```
 
+This ruleset observes the following form:
+```
+[opcode label] |  [feature flag]  	  | [scanrule label]	      | [coercion formula] 
+                    [executor label]              | [attribute count]
+                    [list rule label]              | [reserved word id]
+```
+
+Fields are terminated by either `\` or line break.
+
