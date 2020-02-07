@@ -2,7 +2,7 @@
 Notes and patches for Microsoft QBASIC for DOS
 
 
-This git will host notes and observations QBASIC's source code, which was leaked a few years back along with MS-DOS 6. The source is property of Microsoft and will not be hosted here, but is available from several sources... search for it.
+This git will host notes and observations regarding QBASIC's source code, which was leaked a few years back along with MS-DOS 6. The source is property of Microsoft and will not be hosted here, but is available from several sources... search for it.
 
 
 ## OVERVIEW
