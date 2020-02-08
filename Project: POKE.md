@@ -23,7 +23,7 @@ Next
 Results:
 About four lines filled with blue, then program end. Environment became unresponsive.
 
-Here's the code from the coercer:
+Here's the code from the coercer (exio.asm, line 40):
 ```
 ;***
 ;I4toU2
