@@ -1,4 +1,4 @@
-#Speed tests: QB versions compared
+# Speed tests: QB versions compared
 
 Here I compared four versions of QB: QBASIC, QB4.5, QB7 PDS, and QBFaster handling half-screen fill while running in IDE interpreted mode. Test system was DOSBOX (386) at 1000 cycles, 8 megs RAM, core=dynamic.
 
