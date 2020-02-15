@@ -3,7 +3,7 @@
 Here I compared four versions of QB: QBASIC, QB4.5, QB7 PDS, and QBFaster handling half-screen fill while running in IDE interpreted mode. Test system was DOSBOX (386) at 1000 cycles, 8 megs RAM, core=dynamic.
 
 Here's the code:
-`
+```
 SCREEN 13
 time1 = TIMER
 DEF SEG = &HA000
@@ -12,7 +12,7 @@ POKE index%, 15
 NEXT
 PRINT TIMER - time1
 SLEEP
-`
+```
 #### Results (in seconds, lower is better)
 
 * QBASIC: 8
