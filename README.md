@@ -74,7 +74,7 @@ Fields are terminated by either `\` or line break.
 * `List rule label` begins with `Lr`. It describes to the lister how to re-emit text after the scanner gobbles it. This rule must be compatible with the grammar, or else source code will be mangled automatically by the environment.
 * `Reserved word id` is a reference to the reserved word the opcode , as described in `QBASBNF.PRS`. It is only used internally and is managed completely by the build process.
 
-The existence of `Attribute count`, and its nebulous definition in the source notes, is the first clue that these files do not constitute a "BASIC interpreter kit" by which new commands can be made without knowledge of ASM. Mixing and matching rules between opcodes results strange compile-time errors in all but the barest of cases. A single word statement with no parameters can be created by specifying list rule `LrRw`, scan rule `SS_0_0`, coercion formula `0`, and attribute count `0+OPA_fExecute`. Anything more complicated is likely to prompt QB to make strange complaints about "WHILE without WEND" or "SELECT without END".
+The existence of `Attribute count`, and its nebulous definition in the source notes, is the first clue that these files do not constitute a "BASIC interpreter kit" by which new commands can be made without knowledge of ASM. Mixing and matching rules between opcodes results in strange compile-time errors in all but the barest of cases. A single word statement with no parameters can be created by specifying list rule `LrRw`, scan rule `SS_0_0`, coercion formula `0`, and attribute count `0+OPA_fExecute`. Anything more complicated is likely to prompt QB to make strange complaints about "WHILE without WEND" or "SELECT without END".
 
 
 # Observations
