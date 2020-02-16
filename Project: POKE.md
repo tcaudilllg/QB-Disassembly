@@ -76,3 +76,40 @@ While looking over the logs I also found this interesting performance boondoggle
 The count of these bytecodes and their positions suggested to me that they were codes for blank lines. Inspecting the executor confirmed the fact. Apparently the interpreter must cohabitate with the lister, using the same virtual program code, to save memory, resulting in the necessity of treating both line breaks and comments as statements in their own right, with all the attendant overhead. This isn't the only place where the interpreter must take pains to step over information required by the lister, but further edits throw off the lister and cause the IDE to fail.
 
 When my changes were complete (to QB and to my own code) I had acheived performance improvements of 450% (see `Speed Test: Half-Screen Fill` for more info).
+
+While looking over the POKE code I saw one more opportunity for a boost:
+```
+MakeExe	exStPoke,opStPoke
+	pop	ax				;preserve value to be poked
+	pop	bx
+	pop dx
+	mov dx, es
+	mov es, [b$seg]
+	MOV	ES:[BX],AL	; put it
+	mov es, dx
+    LODSWTX
+    jmp ax
+```
+
+Notice how POKE is constrained to an 8-bit write from a 16-bit operand. Changing `ah` to `ax` doubles the performance of the fill. To maintain compatibility with QB, I inserted a check for the value of `ah`, and branched to the 8-bit write if it was 0 (else 16-bit).
+
+```
+MakeExe	exStPoke,opStPoke
+	pop	ax				;preserve value to be poked
+	pop	bx
+	pop dx
+	mov dx, es
+	mov es, [b$seg]
+	cmp ah, 0
+	je Do8bits
+	MOV	ES:[BX],AX	; put it
+Do8bits:
+	MOV	ES:[BX],AL	; put it
+	mov es, dx
+    LODSWTX
+    jmp ax
+```
+
+I ended up having to alter the `Def Seg` executor to keep a copy of `b$seg`, the variable which remembers the operative segment, on the interpreter's side. I tried just passing the segment in the address and using that, but it was just too slow (involved 32-bit arithmetic) and incompatible to boot (notice I have to pop the third stack param and discard it, which is also done by coercion routine in the original code). Removing the expectation of a 32-bit value for the offset would be a nice speed up. The removal of overflow checks throughout the code, besides offering a massive speed-up has made the interpreter more flexible and capable. If hex is used, it can treated signed values as unsigned.
+
+All told, my changes brought the interpreter to performance levels comparable to the compiler's own output in many circumstances.
